@@ -45,10 +45,7 @@ FIN DE CLASE
 
 //--
 
-
-//--
-
-  CLASE NUMERO 5
+ CLASE NUMERO 5
 
   Cargamos un servicio nuevo a docker, pgadmin, que es una interfaz grafica para manipular postgresSQL. Nos queda entonces la opcion por consola o esta GUI. Cargamos el yml con los datos para poder usar la GUI, luego vimos los datos a traves de ciertos comandos, de la ip de donde corre el la base de datos, para luego cargar los datos en la GUI y poder generar las tabla donde vamos a cargar datos en la db.
 
@@ -62,8 +59,6 @@ FIN DE CLASE
   docker-compose up -d pgadmin	---- >> Levantar servicio de pgadmin
   docker-ps	---- >> Tabla de servicios
   docker-inspect <id>	---- >> Detalle del contenedor
-
-
 
 
 
