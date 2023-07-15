@@ -1,2 +1,2 @@
-# Node-con-postgre
+# Node-con-postgres
 Curso de Platzi
