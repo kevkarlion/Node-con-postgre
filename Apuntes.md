@@ -50,6 +50,9 @@ FIN DE CLASE
 
   CLASE NUMERO 5
 
+  Cargamos un servicio nuevo a docker, pgadmin, que es una interfaz grafica para manipular postgresSQL. Nos queda entonces la opcion por consola o esta GUI. Cargamos el yml con los datos para poder usar la GUI, luego vimos los datos a traves de ciertos comandos, de la ip de donde corre el la base de datos, para luego cargar los datos en la GUI y poder generar las tabla donde vamos a cargar datos en la db.
+
+
   docker-compose exec postgres bash	 ---- >>  Conexion via terminal
   ls -l	---- >>  Ver todos los archivos
   psql -h localhost -d <POSTGRES_DB> -U <POSTGRES_USER>	---- >>  Conexion a Postgres
