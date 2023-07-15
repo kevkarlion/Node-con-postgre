@@ -46,6 +46,21 @@ FIN DE CLASE
 //--
 
 
+//--
+
+  CLASE NUMERO 5
+
+  docker-compose exec postgres bash	 ---- >>  Conexion via terminal
+  ls -l	---- >>  Ver todos los archivos
+  psql -h localhost -d <POSTGRES_DB> -U <POSTGRES_USER>	---- >>  Conexion a Postgres
+  \d+	---- >>  Estructura de la base de datos
+  \q	---- >> Salir base de datos
+  exit	---- >> Salir del contenedor
+  docker-compose up -d pgadmin	---- >> Levantar servicio de pgadmin
+  docker-ps	---- >> Tabla de servicios
+  docker-inspect <id>	---- >> Detalle del contenedor
+
+
 
 
 
