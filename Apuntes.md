@@ -16,7 +16,7 @@ Agrego el puerto.
 
  LUEGO DE ESTO, CORREMOS EN CONSOLA ======= >>>>>
             
-            docker-compose up -d postres
+            docker-compose up -d postgres
 
 
 
