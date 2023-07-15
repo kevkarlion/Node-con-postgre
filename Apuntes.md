@@ -57,8 +57,8 @@ FIN DE CLASE
   \q	---- >> Salir base de datos
   exit	---- >> Salir del contenedor
   docker-compose up -d pgadmin	---- >> Levantar servicio de pgadmin
-  docker-ps	---- >> Tabla de servicios
-  docker-inspect <id>	---- >> Detalle del contenedor
+  docker ps	---- >> Tabla de servicios
+  docker inspect <id>	---- >> Detalle del contenedor
 
 
 
