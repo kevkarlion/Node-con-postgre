@@ -66,3 +66,11 @@ FIN DE CLASE
 
 
 
+
+//-- Clase numero 6
+Agregamos mas caracteristicas a nuestra app, manejando clean architecture.
+====>> Capa de controladores, donde recibimos el request
+====>> Servicios, que se encargan de la logica de negocio
+====>> Lib, donde gestionamos la conexion a terceros.
+
+Agrego que tambien usamos los routes (manejo de rutas), los middlewares, funciones donde podemos manipular los datos antes de que sean enviados a destino.
