@@ -74,3 +74,25 @@ Agregamos mas caracteristicas a nuestra app, manejando clean architecture.
 ====>> Lib, donde gestionamos la conexion a terceros.
 
 Agrego que tambien usamos los routes (manejo de rutas), los middlewares, funciones donde podemos manipular los datos antes de que sean enviados a destino.
+
+
+
+
+
+//-- Clase 7
+Manejando un Pool de conexiones
+
+Hay un problema con getConnection. El problema es que cada vez que llamamos a getConnection, lo que hacemos internamente en el codigo es llamar y llamar y llamar, es decir hacer request continuamentes, eso esta mal porque puede sobrecargar el servidor de request.
+
+
+En el contexto de la informática, el término "pool" se utiliza para referirse a un grupo o conjunto de recursos que se comparten y se administran de manera conjunta. Estos recursos pueden ser de diferentes tipos, como conexiones de bases de datos, hilos de ejecución, conexiones de red, memoria, entre otros.
+
+Un "pool" se crea para optimizar el uso de recursos y evitar su agotamiento o uso ineficiente. En lugar de crear y cerrar recursos individualmente cada vez que se necesitan, se establece un grupo de recursos preexistentes que están disponibles para su uso inmediato. Cuando un componente o aplicación necesita un recurso, lo solicita al pool y cuando ha terminado de usarlo, lo devuelve al pool en lugar de liberarlo completamente.
+
+Un ejemplo común es el "connection pool" o "pool de conexiones" en el ámbito de las bases de datos. En lugar de abrir y cerrar una conexión a la base de datos cada vez que se necesita realizar una operación, se mantiene un conjunto de conexiones abiertas y listas para su uso. Cuando una parte del programa necesita una conexión, la obtiene del pool, la utiliza y luego la devuelve al pool para que pueda ser reutilizada por otras partes del programa.
+
+El uso de pools puede mejorar el rendimiento y la eficiencia de una aplicación al reducir el tiempo de creación y destrucción de recursos. También ayuda a controlar y limitar el número de recursos utilizados simultáneamente, evitando situaciones de sobrecarga o agotamiento.
+
+Es importante tener en cuenta que la gestión adecuada de un pool de recursos es crucial para garantizar su correcto funcionamiento. Esto incluye monitorear y ajustar el tamaño del pool según la demanda, manejar adecuadamente los recursos cuando se produce un fallo o una excepción, y asegurarse de que los recursos se devuelvan al pool cuando ya no se necesitan para evitar fugas de recursos.
+
+
