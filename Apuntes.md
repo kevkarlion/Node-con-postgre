@@ -96,3 +96,18 @@ El uso de pools puede mejorar el rendimiento y la eficiencia de una aplicación 
 Es importante tener en cuenta que la gestión adecuada de un pool de recursos es crucial para garantizar su correcto funcionamiento. Esto incluye monitorear y ajustar el tamaño del pool según la demanda, manejar adecuadamente los recursos cuando se produce un fallo o una excepción, y asegurarse de que los recursos se devuelvan al pool cuando ya no se necesitan para evitar fugas de recursos.
 
 
+
+//-- Clase numero 8 - Variables de ambiente en Node.js
+
+  Es una mala práctica poner en el código los datos sensibles como son, datos de usuario, contraseñas, puertos, etc.
+  Para ello, usamos variables de entorno las cuales serán inyectadas a nuestro ambiente de trabajo (sea producción o desarrollo). Así, trabajaremos de manera más segura.
+
+  Con process leemos variables de entorno en NodeJs.
+  No enviamos variable por variable, sino que protegemos estos datos y enviamos una URL con todo esta cadena de datos.
+  Debemos crear un archivo de variables de entorno. Estas tienen una extension .env
+  Añadimos una libreria que lee los datos del archivo .env y los carga automaticamente en nuestras variables de ambiente. Se llama dotenv.
+
+  
+
+
+
