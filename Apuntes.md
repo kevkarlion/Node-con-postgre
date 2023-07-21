@@ -107,7 +107,30 @@ Es importante tener en cuenta que la gestión adecuada de un pool de recursos es
   Debemos crear un archivo de variables de entorno. Estas tienen una extension .env
   Añadimos una libreria que lee los datos del archivo .env y los carga automaticamente en nuestras variables de ambiente. Se llama dotenv.
 
-  
 
 
+
+//-- Clase numero 9 - ¿Qué es un ORM? Instalación y configuración de Sequelize ORM
+
+
+Un ORM (Object-Relational Mapping) en programación es una técnica que permite interactuar con una base de datos relacional utilizando objetos y clases en lugar de trabajar directamente con consultas SQL. En esencia, un ORM actúa como una capa de abstracción que mapea las tablas de la base de datos a clases en el lenguaje de programación utilizado.
+
+La idea detrás de un ORM es simplificar y agilizar el desarrollo de aplicaciones al permitir a los desarrolladores utilizar el paradigma de programación orientado a objetos en lugar de tener que preocuparse por detalles específicos del sistema de gestión de bases de datos (DBMS) subyacente.
+
+Algunas de las principales funcionalidades que un ORM proporciona son:
+
+1. Mapeo de objetos a tablas: El ORM permite definir clases que representan tablas en la base de datos. Cada instancia de una clase representa una fila en la tabla y las propiedades de la clase corresponden a las columnas de la tabla.
+
+2. Abstracción de consultas: El ORM permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre la base de datos utilizando métodos y funciones de las clases en lugar de escribir directamente consultas SQL.
+
+3. Relaciones y asociaciones: Los ORMs facilitan el manejo de relaciones complejas entre tablas, como relaciones uno a uno, uno a muchos o muchos a muchos, permitiendo navegar por las relaciones entre objetos.
+
+4. Optimización de consultas: Los ORMs pueden optimizar las consultas generadas para mejorar el rendimiento y evitar problemas comunes como las consultas N+1.
+
+5. Independencia del DBMS: Un buen ORM puede ser compatible con múltiples sistemas de gestión de bases de datos, lo que permite cambiar el DBMS subyacente sin tener que modificar significativamente el código de la aplicación.
+
+Ejemplos populares de ORMs incluyen SQLAlchemy para Python, Hibernate para Java, Entity Framework para .NET, y Django ORM para el framework de desarrollo web Django de Python, entre otros. El uso de un ORM puede ahorrar tiempo y reducir la cantidad de código necesario para interactuar con la base de datos, lo que hace que el desarrollo de aplicaciones sea más rápido y eficiente.
+
+Utilizamos en el curso sequelize, una dependencia super potente, agnóstica.
+Gestionamos esta dependencia desde la capa de librerias. 
 
