@@ -48,6 +48,11 @@ class ProductsService {
     const query = "SELECT * FROM tasks";
     const [data] = await sequelize.query(query);
     return data;
+
+    //El uso de sequelize deja inoperable esto, ya que
+    //usa pool de manera nativa.
+    // const rta = await this.pool.query(query);
+    // return rta.rows;
   }
 
   async findOne(id) {
