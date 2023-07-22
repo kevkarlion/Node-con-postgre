@@ -132,5 +132,13 @@ Algunas de las principales funcionalidades que un ORM proporciona son:
 Ejemplos populares de ORMs incluyen SQLAlchemy para Python, Hibernate para Java, Entity Framework para .NET, y Django ORM para el framework de desarrollo web Django de Python, entre otros. El uso de un ORM puede ahorrar tiempo y reducir la cantidad de código necesario para interactuar con la base de datos, lo que hace que el desarrollo de aplicaciones sea más rápido y eficiente.
 
 Utilizamos en el curso sequelize, una dependencia super potente, agnóstica.
-Gestionamos esta dependencia desde la capa de librerias. 
+Gestionamos esta dependencia desde la capa de librerias.
+
+
+
+// --
+Clase 10 - Tu primer modelo en Sequelize
+
+
+
 
