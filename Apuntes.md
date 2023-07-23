@@ -138,6 +138,10 @@ Gestionamos esta dependencia desde la capa de librerias.
 
 // --
 Clase 10 - Tu primer modelo en Sequelize
+Está ampliado en los apuntes de notion el desarrollo. Pero básicamente se estructura así el desarrollo de Sequelize:
+  1- Configuración de la conexión con la base de datos.
+  2- Definir el modelo y el esquema.
+  3- Sincronización con la base de datos.
 
 
 
