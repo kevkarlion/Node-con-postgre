@@ -1,4 +1,6 @@
 const express = require('express');
+//cors para el manejo de paginas habilitadas para
+//consumir nuestra app
 const cors = require('cors');
 const routerApi = require('./routes');
 

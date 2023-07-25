@@ -73,7 +73,7 @@ Agregamos mas caracteristicas a nuestra app, manejando clean architecture.
 ====>> Servicios, que se encargan de la logica de negocio
 ====>> Lib, donde gestionamos la conexion a terceros.
 
-Agrego que tambien usamos los routes (manejo de rutas), los middlewares, funciones donde podemos manipular los datos antes de que sean enviados a destino.
+Agrego que también usamos los routes (manejo de rutas), los middlewares, funciones donde podemos manipular los datos antes de que sean enviados a destino.
 
 
 
