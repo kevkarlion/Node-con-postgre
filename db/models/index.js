@@ -7,10 +7,12 @@
 
 //Modelos
 const { User, UserSchema } = require('./user.model');
+const { Products, ProductsSchema } = require('./product.model');
 
 //Setup Inicial
 function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
+  Products.init(ProductsSchema, Products.config(sequelize));
 }
 
 module.exports = setupModels;

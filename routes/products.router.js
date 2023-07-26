@@ -9,8 +9,8 @@ const service = new ProductsService();
 
 router.get('/', async (req, res, next) => {
   try {
-    const products = await service.find();
-    res.json(products);
+    const data = await service.find();
+    res.json(data);
   } catch (error) {
     next(error);
   }
