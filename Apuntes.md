@@ -135,6 +135,14 @@ Utilizamos en el curso sequelize, una dependencia super potente, agnóstica.
 Gestionamos esta dependencia desde la capa de librerias.
 
 
+Para poder usar el sequelize como enlace a la base de datos, para poder hacer las consultas,
+ejemplo "const rta = await models.User.findAll();", el models lo importo con destructuración de objetos, llamando a sequelize, su configuración hacia el servidor ("sequelize.js").
+const { models } = require('../lib/sequelize'); Entonces con models hacemos las peticiones usando esos metodos automaticamente. ahhh ...un elissír...
+
+//--
+
+
+
 
 // --
 Clase 10 - Tu primer modelo en Sequelize
