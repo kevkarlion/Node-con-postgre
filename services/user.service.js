@@ -42,7 +42,7 @@ class UserService {
   async delete(id) {
     const user = await this.findOne(id);
     await user.destroy();
-    return { id };
+    return id;
   };
 }
 

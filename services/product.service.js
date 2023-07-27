@@ -6,6 +6,8 @@ const boom = require('@hapi/boom');
 
 const { models } = require('./../lib/sequelize');
 
+
+
 //Al usar sequelize ya no es necesario el pool,
 //Sequelize lo gestiona automaticamente
 // const pool = require('./../lib/postgres.pool');
@@ -13,7 +15,7 @@ const { models } = require('./../lib/sequelize');
 
 class ProductsService {
 
-  constructor(){
+  constructor() {
 
     // this.generate();
 
@@ -36,7 +38,7 @@ class ProductsService {
   //   }
   // }
 
-  async create(data) {
+  async create(body) {
     const newProduct = await models.Product.create(body);
     return newProduct;
     // const newProduct = {
@@ -59,35 +61,35 @@ class ProductsService {
   }
 
   async findOne(id) {
-    const product = models.Product.findByPk(id);
-    if (!product){
+    const product = await models.Product.findByPk(id);
+    if (!product) {
       throw boom.notFound("Product not found");
-    } if (product.isBlock){
+    } if (product.isBlock) {
       throw boom.conflict("Product is block");
     }
     return product;
-    }
+  }
 
-    // const product = this.products.find(item => item.id === id);
-    // if (!product) {
-    //   throw boom.notFound('product not found');
-    // }
-    // if (product.isBlock) {
-    //   throw boom.conflict('product is block');
-    // }
-    // return product;
+  // const product = this.products.find(item => item.id === id);
+  // if (!product) {
+  //   throw boom.notFound('product not found');
+  // }
+  // if (product.isBlock) {
+  //   throw boom.conflict('product is block');
+  // }
+  // return product;
   // }
 
   async update(id, changes) {
 
-  /**La función update() devuelve un array con dos elementos: [updatedCount, updatedProducts].
-updatedCount: Es el número de registros actualizados en la base de datos. En este caso, como estamos actualizando un solo producto por su id, updatedCount será 1 si se realizó la actualización correctamente y 0 si no se encontró un producto con el id proporcionado.
-updatedProducts: Es un array que contiene los registros actualizados. Dado que estamos utilizando returning: true, este array contendrá el producto actualizado. */
+    /**La función update() devuelve un array con dos elementos: [updatedCount, updatedProducts].
+  updatedCount: Es el número de registros actualizados en la base de datos. En este caso, como estamos actualizando un solo producto por su id, updatedCount será 1 si se realizó la actualización correctamente y 0 si no se encontró un producto con el id proporcionado.
+  updatedProducts: Es un array que contiene los registros actualizados. Dado que estamos utilizando returning: true, este array contendrá el producto actualizado. */
     const [updatedCount, updatedProducts] = await models.Product.update(changes, {
       where: { id },
       returning: true,
     });
-    if(updatedCount === 0){
+    if (updatedCount === 0) {
       throw boom.notFound("Product not found")
     };
     return updatedProducts[0];
@@ -104,14 +106,17 @@ updatedProducts: Es un array que contiene los registros actualizados. Dado que e
   }
 
   async delete(id) {
-    const index = this.products.findIndex(item => item.id === id);
-    if (index === -1) {
-      throw boom.notFound('product not found');
-    }
-    this.products.splice(index, 1);
-    return { id };
-  }
-
+    const productDelete = await this.findOne(id);
+    await productDelete.destroy();
+    return id;
+  };
+  //   const index = this.products.findIndex(item => item.id === id);
+  //   if (index === -1) {
+  //     throw boom.notFound('product not found');
+  //   }
+  //   this.products.splice(index, 1);
+  //   return { id };
+  // }
 }
 
 module.exports = ProductsService;

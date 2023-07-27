@@ -9,20 +9,22 @@ const ProductsSchema = {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
-  nombre: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  precio: {
+  price: {
     allowNull: false,
-    type: DataTypes.FLOAT,
+    type: DataTypes.INTEGER
   },
-  descripcion: {
+  description: {
+    allowNull: false,
     type: DataTypes.TEXT
   },
-  imagen: {
+  image: {
+    allowNull: false,
     type: DataTypes.STRING
   },
   createdAt: {
