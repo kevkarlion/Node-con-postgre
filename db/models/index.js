@@ -8,11 +8,14 @@
 //Modelos
 const { User, UserSchema } = require('./user.model');
 const { Products, ProductsSchema } = require('./product.model');
+const { Category, CategorySchema } = require('./category.model');
+
 
 //Setup Inicial
 function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
   Products.init(ProductsSchema, Products.config(sequelize));
+  Category.init(CategorySchema , Category.config(sequelize));
 }
 
 module.exports = setupModels;

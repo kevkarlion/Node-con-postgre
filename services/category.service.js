@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const {models } = require('./../lib/sequelize');
 
 class CategoryService {
 
@@ -9,7 +10,8 @@ class CategoryService {
   }
 
   async find() {
-    return [];
+    const rta = await models.Category.findAll();
+    return rta;
   }
 
   async findOne(id) {

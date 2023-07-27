@@ -56,12 +56,14 @@ class User extends Model {
       //modelName es el nombre con el que va a guardar el modelo,
       //luego cuando lo invoquemos, será con este nombre
       modelName: 'User',
-      timestamps: false
-    }
-  }
-}
 
-module.exports = { USER_TABLE, UserSchema, User }
+      //Sequelize no agregará automáticamente dos campos adicionales llamados createdAt y updatedAt en la tabla de la base de datos.
+      timestamps: true,
+    };
+  };
+};
+
+module.exports = { USER_TABLE, UserSchema, User };
 
 
 /**
