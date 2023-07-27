@@ -4,6 +4,14 @@ const boom = require('@hapi/boom');
 
 //models es donde se van a guardar todos los modelos, o
 //la forma en que podemos acceder a él.
+/**
+ * Configurado el modelo y vinculado con la conexión
+ * de la base de datos representada por sequelize.
+ * Esto implica que Sequelize creo la tabla en la base
+ * de datos según la estructura definida en el Schema
+ * y también establecio la conexión entre el modelo
+ * en JavaScript y la tabla en la base de datos.
+ */
 const { models } = require('../lib/sequelize');
 
 

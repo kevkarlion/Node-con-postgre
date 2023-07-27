@@ -31,12 +31,12 @@ const UserSchema = {
   //Es un campo que contiene informacion sobre
   //la fecha en que se creo el campo
   createdAt: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW
-  }
-}
+  },
+};
 
 
 //-- Definimos una clase con nuestro Modelo
@@ -48,6 +48,8 @@ class User extends Model {
 
   static config(sequelize){
     return {
+      // Es la instancia de Sequelize que se utilizará para conectar
+      // y realizar operaciones con la base de datos
       sequelize,
       tableName: USER_TABLE,
 
@@ -60,3 +62,18 @@ class User extends Model {
 }
 
 module.exports = { USER_TABLE, UserSchema, User }
+
+
+/**
+ * En el método `config` de la clase `User`, los datos que son necesarios y que deben ser proporcionados para su correcto funcionamiento son los siguientes:
+
+1. `sequelize`: Es la instancia de Sequelize que se utilizará para conectar y realizar operaciones con la base de datos. Sin esta instancia, el modelo `User` no podrá interactuar con la base de datos.
+
+2. `tableName`: Es el nombre de la tabla en la base de datos donde se almacenarán los registros del modelo `User`. Este parámetro es esencial para que Sequelize sepa en qué tabla debe realizar las consultas y operaciones relacionadas con este modelo.
+
+3. `modelName`: Es el nombre con el que se guardará el modelo `User` en Sequelize. Aunque es opcional, proporcionar un nombre aquí permitirá referirse al modelo utilizando ese nombre en lugar del nombre de la clase (`User`). Es útil cuando se realiza una consulta o una operación con el modelo.
+
+4. `timestamps`: Es un booleano que indica si Sequelize debe agregar automáticamente las marcas de tiempo `createdAt` y `updatedAt` a cada registro del modelo. Estas marcas de tiempo se utilizan para rastrear cuándo se creó y modificó por última vez un registro. Si `timestamps` es `false`, Sequelize no agregará automáticamente estas marcas de tiempo.
+
+En resumen, `sequelize`, `tableName` y `timestamps` son los datos necesarios que se deben proporcionar en el objeto de configuración del modelo `User`. El parámetro `modelName` es opcional y se utiliza principalmente para tener un nombre personalizado para el modelo en Sequelize.
+ */

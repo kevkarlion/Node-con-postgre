@@ -63,6 +63,26 @@ FIN DE CLASE
 
 
 
+//--
+  Datos en Sequelize y su funcionamiento :
+  La diferencia principal entre `init` y `sync` en Sequelize es su propósito y función.
+
+1. `init`:
+   - `init` es un método utilizado para inicializar los modelos en Sequelize.
+   - Cuando defines un modelo utilizando la clase `Model` de Sequelize, es necesario inicializarlo antes de poder usarlo en tu aplicación.
+   - La inicialización configura el modelo con su esquema, relaciones y otras configuraciones.
+   - El método `init` se llama generalmente dentro de un archivo donde defines tus modelos y configuraciones.
+
+2. `sync`:
+   - `sync` es un método utilizado para sincronizar los modelos definidos con la base de datos.
+   - Cuando llamas al método `sequelize.sync()`, Sequelize inspeccionará los modelos definidos y creará o actualizará automáticamente las tablas en la base de datos para que coincidan con la definición de los modelos.
+   - Si una tabla no existe, Sequelize la creará. Si ya existe, Sequelize actualizará la estructura para que coincida con el modelo.
+   - Es importante tener en cuenta que `sync` debe utilizarse con precaución en entornos de producción, ya que puede realizar cambios en la base de datos y potencialmente eliminar datos existentes si los modelos se modifican de manera incorrecta.
+
+En resumen, `init` se utiliza para configurar los modelos, mientras que `sync` se utiliza para asegurarse de que la estructura de la base de datos coincida con la definición de los modelos. Ambos son pasos importantes al trabajar con Sequelize, y su orden de uso generalmente es primero la inicialización de los modelos y luego la sincronización con la base de datos. Sin embargo, es importante tener en cuenta que el uso de `sync` puede ser riesgoso en producción, por lo que es recomendable utilizar migraciones controladas para realizar cambios en la base de datos en entornos de producción.
+
+//--
+
 
 
 
