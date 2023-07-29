@@ -13,15 +13,30 @@ const boom = require('@hapi/boom');
  * en JavaScript y la tabla en la base de datos.
  */
 const { models } = require('../lib/sequelize');
+const { User } = require('../db/models/user.model');
 
 
 class UserService {
   constructor() {}
 
-  async create(data) {
-    const newUser = await models.User.create(data);
+
+  async create( body) {
+    const newUser = await models.User.create(body);
     return newUser;
-  }
+  };
+
+
+    //Hay un manejador de
+    // const newUser = await models.User.findOne({
+    //   where: {email: body.email }
+    // });
+    // if(newUser){
+    //   throw boom.conflict("Email already exist in data base");
+    // } else {
+    //   await User.create(body);
+    //   return newUser;
+    // };
+
 
   async find() {
     //Estamos trabajando con P.O.O, usando sequelize

@@ -17,6 +17,9 @@ class CategoryService {
 
   async findOne(id) {
     const rta = await models.Category.findByPk(id);
+    if (!rta) {
+      throw boom.notFound("Product not found");
+    }
     return rta;
   }
 
@@ -34,7 +37,7 @@ class CategoryService {
   async delete(id) {
     const categoryDelete = await this.findOne(id);
     await categoryDelete.destroy();
-    return (id);
+    return id;
   }
 
 }
