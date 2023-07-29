@@ -31,7 +31,7 @@ const UserSchema = {
   //Es un campo que contiene informacion sobre
   //la fecha en que se creo el campo
   createdAt: {
-    allowNull: true,
+    allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW
@@ -58,7 +58,7 @@ class User extends Model {
       modelName: 'User',
 
       //Sequelize no agregará automáticamente dos campos adicionales llamados createdAt y updatedAt en la tabla de la base de datos.
-      timestamps: true,
+      timestamps: false,
     };
   };
 };

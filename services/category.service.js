@@ -6,6 +6,7 @@ class CategoryService {
   constructor(){
   }
   async create(data) {
+    await models.Category.create(data);
     return data;
   }
 
@@ -15,18 +16,25 @@ class CategoryService {
   }
 
   async findOne(id) {
-    return { id };
+    const rta = await models.Category.findByPk(id);
+    return rta;
   }
 
   async update(id, changes) {
-    return {
-      id,
-      changes,
-    };
+    const [updatedCount, updatedCategories] = await models.Category.update(changes, {
+      where: { id },
+      returning: true
+    });
+    if(!updatedCount){
+      throw boom.notFound("Product not found")
+    }
+    return updatedCategories[0];
   }
 
   async delete(id) {
-    return { id };
+    const categoryDelete = await this.findOne(id);
+    await categoryDelete.destroy();
+    return (id);
   }
 
 }

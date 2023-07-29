@@ -84,7 +84,10 @@ class ProductsService {
 
     /**La función update() devuelve un array con dos elementos: [updatedCount, updatedProducts].
   updatedCount: Es el número de registros actualizados en la base de datos. En este caso, como estamos actualizando un solo producto por su id, updatedCount será 1 si se realizó la actualización correctamente y 0 si no se encontró un producto con el id proporcionado.
-  updatedProducts: Es un array que contiene los registros actualizados. Dado que estamos utilizando returning: true, este array contendrá el producto actualizado. */
+  updatedProducts: Es un array que contiene los registros actualizados. Dado que estamos utilizando returning: true, este array contendrá el producto actualizado.
+  where: { id }: El parámetro where se utiliza para especificar las condiciones que deben cumplir los registros que se desean actualizar. En este caso, estás buscando los registros en la tabla "products" que tengan un valor de id igual al valor que se encuentra en la variable id. Esta cláusula where permite seleccionar los registros específicos que deseas actualizar. En otras palabras, solo se actualizarán los registros cuyo campo id coincida con el valor que esté almacenado en la variable id.
+
+  returning: true: El parámetro returning se utiliza para especificar si deseas que la función update() devuelva los registros actualizados después de que se realice la actualización. Cuando estableces returning: true, la función update() devolverá dos valores: el número de registros actualizados (updatedCount) y una matriz que contiene los registros actualizados (updatedProducts) */
     const [updatedCount, updatedProducts] = await models.Product.update(changes, {
       where: { id },
       returning: true,

@@ -18,12 +18,12 @@ const CategorySchema = {
     allowNull: false,
     type: DataTypes.STRING
   },
-  img: {
+  image: {
     allowNull: false,
     type: DataTypes.STRING
   },
   createdAt: {
-    allowNull: true,
+    allowNull: false,
     type: DataTypes.DATE,
     field: 'created_at',
     defaultValue: Sequelize.NOW,
@@ -40,7 +40,7 @@ class Category extends Model{
       sequelize,
       tableName: CATEGORY_TABLE,
       modelName: 'Category',
-      timestamps: true,
+      timestamps: false,
     };
   };
 };

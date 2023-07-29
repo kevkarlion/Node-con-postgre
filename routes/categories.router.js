@@ -21,8 +21,8 @@ router.get('/:id',
   async (req, res, next) => {
     try {
       const { id } = req.params;
-      const category = await service.findOne(id);
-      res.json(category);
+      const categoryItem = await service.findOne(id);
+      res.json(categoryItem);
     } catch (error) {
       next(error);
     }
@@ -34,8 +34,8 @@ router.post('/',
   async (req, res, next) => {
     try {
       const body = req.body;
-      const newCategory = await service.create(body);
-      res.status(201).json(newCategory);
+      const rta = await service.create(body);
+      res.status(201).json(rta);
     } catch (error) {
       next(error);
     }
