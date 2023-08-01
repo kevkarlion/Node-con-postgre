@@ -174,3 +174,8 @@ Está ampliado en los apuntes de notion el desarrollo. Pero básicamente se estr
 
 
 
+//--
+Clase numero 12 - Cambiando la base de datos a MySQL
+
+
+  1- Instale contenedores de MySql y de PhpMyAdmin

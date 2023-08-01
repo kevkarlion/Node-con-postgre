@@ -1,3 +1,6 @@
+
+//Librería de sequelize que permite manejar los errores
+//tipo sequelize. ta, bárbaro...
 const { ValidationError } = require('sequelize');
 
 const boom = require('@hapi/boom');
