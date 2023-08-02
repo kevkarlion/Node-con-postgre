@@ -28,6 +28,11 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING
   },
+  role: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    defaultValue: 'customer'
+  },
   //Es un campo que contiene informacion sobre
   //la fecha en que se creo el campo
   createdAt: {

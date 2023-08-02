@@ -20,7 +20,7 @@ class UserService {
   constructor() {}
 
 
-  async create( body) {
+  async create(body) {
     const newUser = await models.User.create(body);
     return newUser;
   };

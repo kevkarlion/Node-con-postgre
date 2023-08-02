@@ -203,3 +203,9 @@ Las migraciones con sequelize se hacen gracias a sync(). Se leen los modelos y e
 Clase 14 - Configurando y corriendo migraciones con npm scripts
 
 Configuramos scripts para correr migraciones.
+
+
+//--
+
+//--
+Clase 15 - El profesor indica un dato importante. Con sync no se pueden generar modificaciones a una tabla que ya esta creada. A diferencia de las migraciones, donde si es posible hacer este tipo de modificaciones.
