@@ -179,3 +179,27 @@ Clase numero 12 - Cambiando la base de datos a MySQL
 
 
   1- Instale contenedores de MySql y de PhpMyAdmin
+  2- Hice los cambios en la sintaxis de db. Ahora es mysql y no postgres.
+
+//--
+
+
+
+//--
+Clase numero 13 - ¿Qué son las migraciones? Migraciones en Sequelize ORM
+Las migraciones son un sistema de control de versiones en los cambios que se realizan en las bases de datos.
+
+Las migraciones con sequelize se hacen gracias a sync(). Se leen los modelos y empieza a crear tablas. Sin embargo no se aconseja para correrlo en produccion. 
+
+1- Instale el cli de sequelize
+2- cree archivo sequelizerc 
+  El archivo .sequelizerc es un archivo de configuración opcional que se utiliza en proyectos que utilizan Sequelize. Su objetivo principal es permitirte personalizar la ubicación de los directorios y archivos utilizados por Sequelize en tu proyecto.
+
+3- Cree el archivo de configuracion de las migraciones config.js
+4- Cree carpetas - migrations, seeders.
+
+
+//--
+Clase 14 - Configurando y corriendo migraciones con npm scripts
+
+Configuramos scripts para correr migraciones.
