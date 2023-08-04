@@ -1,6 +1,6 @@
 
 const { Model, DataTypes, Sequelize } = require('sequelize');
-const sequelize = require("./../../lib/sequelize");
+// const sequelize = require("./../../lib/sequelize");
 
 
 

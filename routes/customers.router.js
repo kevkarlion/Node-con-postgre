@@ -1,11 +1,11 @@
 const express = require('express');
 
-const ProductsService = require('./../services/product.service');
+const CustomerService = require('./../services/customer.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const { createCustomerSchema, getCustomerSchema, updateCustomerSchema } = require('./../schemas/customer.schema');
 
 const router = express.Router();
-const service = new ProductsService();
+const service = new CustomerService();
 
 router.get('/', async (req, res, next) => {
   try {

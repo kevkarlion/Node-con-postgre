@@ -13,7 +13,7 @@ const boom = require('@hapi/boom');
  * en JavaScript y la tabla en la base de datos.
  */
 const { models } = require('../lib/sequelize');
-const { User } = require('../db/models/user.model');
+// const { User } = require('../db/models/user.model');
 
 
 class UserService {

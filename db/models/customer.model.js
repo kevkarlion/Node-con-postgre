@@ -1,8 +1,9 @@
-//Este archivo definirá el modelo de la tabla de usuarios
+//Este archivo definirá el modelo de la tabla de usuarios,
+//y su configuracion con la db
 //Creo el esquema
 
 const { Model, DataTypes, Sequelize } = require('sequelize');
-const sequelize = require('../../lib/sequelize');
+// const sequelize = require('../../lib/sequelize');
 const { USER_TABLE, User } = require('./user.model');
 
 
@@ -11,8 +12,6 @@ const CUSTOMER_TABLE = 'customers';
 
 //-- Esquema que define la estructura de la db
 const CustomerSchema = {
-  // Definimos la estructura de la tabla
-  //Atributos
 
   id: {
     allowNull: false,
@@ -31,7 +30,7 @@ const CustomerSchema = {
   },
   phone: {
     allowNull: true,
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     defaultValue: 'customer'
   },
   //Es un campo que contiene informacion sobre
@@ -42,11 +41,18 @@ const CustomerSchema = {
     field: 'create_at',
     defaultValue: Sequelize.NOW
   },
-  //Configuracion para la foringKey enlazada a primaryKey User
+  //Configuracion para la foreignKey enlazada a primaryKey de la tabla, User
   userId: {
+    field: 'user_id',
     allowNull: false,
     type: DataTypes.INTEGER,
     unique: true,
+
+
+    //Le indicamos a que tabla va relacionada con "references"
+    /**onUpdate: Esta opción especifica qué acción se realizará en la tabla secundaria (la tabla que tiene la clave foránea) cuando se actualiza el valor de la clave primaria en la tabla principal (la tabla a la que se hace referencia). En este caso, se establece como 'CASCADE', lo que significa que cuando se actualiza el valor de la clave primaria en la tabla principal, todas las filas relacionadas en la tabla secundaria también se actualizarán en consecuencia. Por ejemplo, si cambias el ID de un usuario en la tabla principal, todas las filas que tienen el mismo ID de usuario en la tabla secundaria también se actualizarán con el nuevo valor. */
+    /**onDelete: Esta opción especifica qué acción se realizará en la tabla secundaria cuando se elimina una fila de la tabla principal. En este caso, se establece como 'SET NULL', lo que significa que cuando se elimina una fila de la tabla principal, el valor de la clave foránea en la tabla secundaria se establecerá en NULL. Por ejemplo, si eliminas un usuario de la tabla principal, la columna "userId" en la tabla secundaria se establecerá en NULL para todas las filas que tenían la relación con ese usuario eliminado.
+ */
     references: {
       model: USER_TABLE,
       key: 'id'
@@ -61,6 +67,9 @@ const CustomerSchema = {
 // IMPORTANTE! El Model tiene todas las formas en que vamos a hacer querys
 class Customer extends Model {
 
+  //recibo la asociacion de modelos
+  //y luego especifico models.User, la tabla que quiero
+  //vincular con Customer
   static associate(models) {
     this.belongsTo(models.User, {as: 'user'});
   }

@@ -2,7 +2,7 @@ const boom = require('@hapi/boom');
 
 
 const { models } = require('../lib/sequelize');
-const { Customer } = require('../db/models/customer.model');
+// const { Customer } = require('../db/models/customer.model');
 
 
 class CustomerService {
@@ -21,24 +21,24 @@ class CustomerService {
   }
 
   async findOne(id) {
-    const customer = await models.Customer.findByPk(id);
+    const customerFind = await models.Customer.findByPk(id);
     if(!user){
       throw boom.notFound("Customer not found");
     }
-    return customer;
+    return customerFind;
   }
 
   async update(id, changes) {
 
-    const customer = await this.findOne(id);
-    const rta = await customer.update(changes);
+    const customerFind = await this.findOne(id);
+    const rta = await customerFind.update(changes);
     return rta;
 
   }
 
   async delete(id) {
-    const customer = await this.findOne(id);
-    await customer.destroy();
+    const customerFind = await this.findOne(id);
+    await customerFind.destroy();
     return id;
   };
 }

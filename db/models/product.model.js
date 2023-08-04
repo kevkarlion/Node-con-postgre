@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const sequelize = require('../../lib/sequelize');
+// const sequelize = require('../../lib/sequelize');
 
 const PRODUCT_TABLE = 'products';
 
@@ -48,6 +48,8 @@ class Products extends Model {
       //modelName es el nombre con el que va a guardar el modelo,
       //luego cuando lo invoquemos, será con este nombre
       modelName: 'Product',
+
+      //Marcas de tiempo automaticas.
       timestamps: false
     }
   }
