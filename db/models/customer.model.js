@@ -3,8 +3,8 @@
 //Creo el esquema
 
 const { Model, DataTypes, Sequelize } = require('sequelize');
-// const sequelize = require('../../lib/sequelize');
-const { USER_TABLE, User } = require('./user.model');
+
+const { USER_TABLE } = require('./user.model');
 
 
 //-- Nombre de nuestra tabla
@@ -41,12 +41,15 @@ const CustomerSchema = {
     field: 'create_at',
     defaultValue: Sequelize.NOW
   },
+
+
+
   //Configuracion para la foreignKey enlazada a primaryKey de la tabla, User
   userId: {
     field: 'user_id',
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: true,
+    unique: false,
 
 
     //Le indicamos a que tabla va relacionada con "references"
@@ -60,6 +63,9 @@ const CustomerSchema = {
     onUpdate: 'CASCADE',
     onDelete: 'SET NULL'
   },
+
+
+
 };
 
 

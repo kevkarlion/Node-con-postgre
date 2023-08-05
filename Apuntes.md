@@ -215,3 +215,48 @@ Clase 15 - El profesor indica un dato importante. Con sync no se pueden generar 
 
 //-- Clase numero 16 - Relaciones uno a uno
 
+
+
+'use strict';
+const { USER_TABLE, UserSchema } = require('../models/user.model');
+
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface) {
+    await queryInterface.addColumn(USER_TABLE, 'role', UserSchema.role);
+  },
+
+  async down (queryInterface, Sequelize) {
+    await queryInterface.removeColumn(USER_TABLE, 'role');
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+const { CUSTOMER_TABLE, CustomerSchema } = require('../models/customer.model');
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface) {
+    await queryInterface.createTable(CUSTOMER_TABLE, CustomerSchema);
+  },
+
+  async down (queryInterface) {
+    await queryInterface.dropTable(CUSTOMER_TABLE, CustomerSchema);
+
+  }
+};
