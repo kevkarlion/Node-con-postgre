@@ -49,13 +49,17 @@ const CustomerSchema = {
     field: 'user_id',
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: false,
+    unique: true,
 
 
     //Le indicamos a que tabla va relacionada con "references"
     /**onUpdate: Esta opción especifica qué acción se realizará en la tabla secundaria (la tabla que tiene la clave foránea) cuando se actualiza el valor de la clave primaria en la tabla principal (la tabla a la que se hace referencia). En este caso, se establece como 'CASCADE', lo que significa que cuando se actualiza el valor de la clave primaria en la tabla principal, todas las filas relacionadas en la tabla secundaria también se actualizarán en consecuencia. Por ejemplo, si cambias el ID de un usuario en la tabla principal, todas las filas que tienen el mismo ID de usuario en la tabla secundaria también se actualizarán con el nuevo valor. */
     /**onDelete: Esta opción especifica qué acción se realizará en la tabla secundaria cuando se elimina una fila de la tabla principal. En este caso, se establece como 'SET NULL', lo que significa que cuando se elimina una fila de la tabla principal, el valor de la clave foránea en la tabla secundaria se establecerá en NULL. Por ejemplo, si eliminas un usuario de la tabla principal, la columna "userId" en la tabla secundaria se establecerá en NULL para todas las filas que tenían la relación con ese usuario eliminado.
  */
+
+    /**Al hacer la modificacion de que userId sea unico, no debemos enviar la parte de "references",
+     * ya que esta creada previamente en migrationes previas.
+     */
     references: {
       model: USER_TABLE,
       key: 'id'

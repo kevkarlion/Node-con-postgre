@@ -10,13 +10,27 @@ class CustomerService {
 
 
   async create(body) {
-    const newCustomer = await models.Customer.create(body);
+    //Le digo que cree un usuario nuevo, con la informacion que
+    //esta en body.user
+    // const newUser = await models.User.create(body.user)
+    // const newCustomer = await models.Customer.create({
+    //   ...body,
+    //   userId: newUser.id,
+    // });
+    const newCustomer = await models.Customer.create(body, {
+        include: ['user'],
+      });
     return newCustomer;
   };
 
 
   async find() {
-    const rta = await models.Customer.findAll();
+    const rta = await models.Customer.findAll({
+      /**Puedo incluir en la busqueda
+       * ya que esta configurado "this.belongsTo(models.User, {as: 'user'});"
+       */
+      include: ['user'],
+    });
     return rta;
   }
 

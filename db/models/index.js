@@ -27,6 +27,8 @@ function setupModels(sequelize) {
 
   /**Esto establece las asociaciones o relaciones entre los modelos. Aquí, Customer es el modelo que estamos asociando, y sequelize.models es un objeto que contiene todos los modelos definidos. Esto es necesario para definir las relaciones entre los modelos. */
   Customer.associate(sequelize.models);
+  User.associate(sequelize.models);
+
 }
 
 module.exports = setupModels;

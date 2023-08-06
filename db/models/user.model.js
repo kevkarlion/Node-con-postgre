@@ -47,8 +47,14 @@ const UserSchema = {
 //-- Definimos una clase con nuestro Modelo
 // IMPORTANTE! El Model tiene todas las formas en que vamos a hacer querys
 class User extends Model {
-  static associate(){
-    //associate
+  static associate(models){
+    //Le indico la asociacion que hay del lado del customer.
+    //desde la tabla customers hay una relacion userId y ahi se puede
+    //resolver mutuamente la relacion
+    this.hasOne(models.Customer, {
+      as:'customer',
+      foreignKey: 'userId'
+    });
   }
 
   static config(sequelize){

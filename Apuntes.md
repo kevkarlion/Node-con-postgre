@@ -216,47 +216,23 @@ Clase 15 - El profesor indica un dato importante. Con sync no se pueden generar 
 //-- Clase numero 16 - Relaciones uno a uno
 
 
+//-- 
+Clase 17 Resolviendo las relaciones uno a uno
 
-'use strict';
-const { USER_TABLE, UserSchema } = require('../models/user.model');
+  La ide de esta clase es poder realizar creaciones en la tabla de customers y que de manera automatica, se creen tambien usuarios. Esto seria vinculando la foreign key con la primary key.
+  Tambien sera parte de esta clase, la forma en que se muestra la informacion en los endpoints.
+  Usando el include en el service de customers se resuelve el get completo de customers + users.
 
+  Como logro que tambien ocurra cuando hago una busqueda desde users y me muestra los customers vinculados?
+    En user.models, configuro el objeto class User extends models y hago un hasOne.
+    Luego cargo esta configuracion en el index de los modelos
+    Luego le indico al schema de usuarios que cuando haga un findAll, tambien cargue esta a customers desde la asociacion previamente hecha.
+    
 
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface) {
-    await queryInterface.addColumn(USER_TABLE, 'role', UserSchema.role);
-  },
+  Vamos a crear de una vez, al usuario por medio del POST de Customers
+    Modifico mi customer.schema para indicarle que ahora al momento de crear un customer nuevo, debo cargar datos del user nuevo tambien.
+    sequelize automaticamente sabe que hay un enlace con las keys, por eso en el service de customer, al momento de crear un customer nuevo, le indico que incluya el users si es que viene en los datos que envia el cliente.
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn(USER_TABLE, 'role');
-  }
-};
-
-
-
-
-
+//--
 
 
-
-
-
-
-
-
-
-'use strict';
-
-const { CUSTOMER_TABLE, CustomerSchema } = require('../models/customer.model');
-
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface) {
-    await queryInterface.createTable(CUSTOMER_TABLE, CustomerSchema);
-  },
-
-  async down (queryInterface) {
-    await queryInterface.dropTable(CUSTOMER_TABLE, CustomerSchema);
-
-  }
-};

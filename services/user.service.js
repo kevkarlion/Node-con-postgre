@@ -40,7 +40,9 @@ class UserService {
 
   async find() {
     //Estamos trabajando con P.O.O, usando sequelize
-    const rta = await models.User.findAll();
+    const rta = await models.User.findAll({
+      include: ['customer'],
+    });
 
     // const rta = await client.query('SELECT * FROM tasks');
     return rta;
