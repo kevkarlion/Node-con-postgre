@@ -12,6 +12,7 @@ const { Category, CategorySchema } = require('./category.model');
 const { Customer, CustomerSchema } = require('./customer.model');
 
 
+
 //Setup Inicial
 function setupModels(sequelize) {
 
@@ -20,14 +21,17 @@ function setupModels(sequelize) {
   //Segundo parametro -> Configuracion especifica para la db, se define
   //tambien, usando un tipo JSON.
   User.init(UserSchema, User.config(sequelize));
-  Products.init(ProductsSchema, Products.config(sequelize));
   Category.init(CategorySchema, Category.config(sequelize));
+  Products.init(ProductsSchema, Products.config(sequelize));
   Customer.init(CustomerSchema, Customer.config(sequelize));
 
 
   /**Esto establece las asociaciones o relaciones entre los modelos. Aquí, Customer es el modelo que estamos asociando, y sequelize.models es un objeto que contiene todos los modelos definidos. Esto es necesario para definir las relaciones entre los modelos. */
   Customer.associate(sequelize.models);
   User.associate(sequelize.models);
+  Category.associate(sequelize.models);
+  Products.associate(sequelize.models);
+
 
 }
 

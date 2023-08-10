@@ -1,8 +1,8 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-// const sequelize = require('../../lib/sequelize');
-
 const PRODUCT_TABLE = 'products';
+
+const { CATEGORY_TABLE } = require('./category.model')
 
 const ProductsSchema = {
   id: {
@@ -32,12 +32,29 @@ const ProductsSchema = {
     type: DataTypes.DATE,
     field: 'create_at',
     defaultValue: Sequelize.NOW
+  },
+  //Declaro el campo que estara vinculado a otra tabla
+  categoryId: {
+    field: 'category_id',
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    // unique: true,
+    references: {
+      model: CATEGORY_TABLE,
+      key: 'id',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL',
   }
 };
 
 class Products extends Model {
-  static associate() {
-    //associate
+  static associate(model) {
+    /**
+     * Un producto solo puede tener 1 categoria.
+     * Una categoria puede tener muchos productos.
+     */
+    this.belongsTo(model.Category, { as: 'category' });
   }
 
   static config(sequelize) {

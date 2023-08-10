@@ -1,13 +1,13 @@
 const boom = require('@hapi/boom');
-const {models } = require('./../lib/sequelize');
+const { models } = require('./../lib/sequelize');
 
 class CategoryService {
 
   constructor(){
   }
   async create(data) {
-    await models.Category.create(data);
-    return data;
+    const newCategory = await models.Category.create(data);
+    return newCategory;
   }
 
   async find() {
