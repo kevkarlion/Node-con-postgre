@@ -51,7 +51,9 @@ class ProductsService {
   }
 
   async find() {
-    const data = await models.Product.findAll();
+    const data = await models.Product.findAll({
+      include: ['category'],
+    });
     return data;
 
     //El uso de sequelize deja inoperable esto, ya que
