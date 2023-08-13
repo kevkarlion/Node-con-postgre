@@ -81,7 +81,11 @@ class Customer extends Model {
   //y luego especifico models.User, la tabla que quiero
   //vincular con Customer
   static associate(models) {
-    this.belongsTo(models.User, {as: 'user'});
+    this.belongsTo(models.User, { as: 'user' });
+    this.hasMany(models.Order,{
+      as: 'order',
+      foreignKey: 'customerId'
+    });
   }
 
   static config(sequelize) {

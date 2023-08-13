@@ -244,3 +244,20 @@ Clase 18 - Relaciones uno a muchos
 
 
 //--
+
+
+//-- Clase 20. Órdenes de compra
+ Cuando hay una relación de muchos a muchos, con en el caso de una orden de compra, puede tener muchos productos y un producto puede tener muchas ordenes de compra, lo que se hace es generar una tabla ternaria. Es decir, una tabla que conecta a ordenes y a productos, en este caso. Esta tabla ternaria tambien se conoce como "Join table".
+
+Anidamiento en la solicitud de order.
+async findOne(id) {
+   
+    const order = await models.Order.findByPk(id, {
+      include: [{
+        association: 'customer',
+        include: ['user'],
+      }],
+    });
+    return order;
+
+ //--
