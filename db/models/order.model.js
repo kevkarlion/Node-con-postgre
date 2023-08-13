@@ -29,13 +29,37 @@ const OrderSchema = {
     field: 'create_at',
     defaultValue: Sequelize.NOW
   },
+  total: {
+    type: DataTypes.VIRTUAL,
+    get(){
+      if(this.items.length > 0 ){
+        return this.items.reduce((total, item ) => {
+          return total + (item.price * item.OrderProduct.amount)
+        }, 0);
+      }
+      return 0;
+    }
+  },
 
 };
 
 class Order extends Model {
-  static associate(model) {
+  static associate(models) {
+    this.belongsTo(models.Customer, { as: 'customer' });
 
-    this.belongsTo(model.Customer, { as: 'customer' });
+    //Le indico cual es la tabla con la que tiene una relacion muchos a muchos.
+    //Pero, esta asociacion se resuelve por medio de su tabla ternaria, es por eso
+    //que una vez que le indico el models.Products, despues le paso los datos
+    //en detalle de quien es la tabla ternaria que hace esta asosciacion.
+    /**
+     * En resumen, estas líneas de código establecen las relaciones entre el modelo Order y los modelos Customer y Product utilizando las asociaciones "pertenece a" y "muchos a muchos". La asociación muchos a muchos se resuelve a través de una tabla ternaria (OrderProduct), que permite relacionar órdenes con productos de manera eficiente.
+     */
+    this.belongsToMany(models.Product, {
+      as: 'items',
+      through: models.OrderProduct,
+      foreignKey: 'orderId',
+      otherKey: 'productId'
+    });
   }
 
   static config(sequelize) {

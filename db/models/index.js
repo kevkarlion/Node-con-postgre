@@ -11,6 +11,7 @@ const { Products, ProductsSchema } = require('./product.model');
 const { Category, CategorySchema } = require('./category.model');
 const { Customer, CustomerSchema } = require('./customer.model');
 const { Order, OrderSchema } = require('./order.model');
+const { OrderProduct, OrderProductSchema } = require('./order-product.model');
 
 
 
@@ -26,6 +27,7 @@ function setupModels(sequelize) {
   Products.init(ProductsSchema, Products.config(sequelize));
   Customer.init(CustomerSchema, Customer.config(sequelize));
   Order.init(OrderSchema, Order.config(sequelize));
+  OrderProduct.init(OrderProductSchema, OrderProduct.config(sequelize));
 
 
 

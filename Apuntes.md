@@ -261,3 +261,21 @@ async findOne(id) {
     return order;
 
  //--
+
+
+//-- Clase 22
+   async addItem(data) {
+    //Estoy creando una nuevo elemento en la base de datos,
+    //peero, estoy creando desde order, un nvo. elemento en OrderProduct.
+    //Es por ello que cuando que cree un metodo en Order que se llama "addItemSchema",
+    //donde le requiero al ususario datos como el productId y orderId, ya que no se crea
+    //en esta tabla de Order, sino en OrderProduct
+    
+    const newItem = await models.OrderProduct.create(data)
+    return newItem;
+  }
+
+
+
+  Tambien calculamos el resultado entre campos. Una suma del precio total de todos los productos de una compra. 
+//--

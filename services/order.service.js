@@ -12,6 +12,16 @@ class OrderService {
     return newOrder;
   }
 
+  async addItem(body) {
+    //Estoy creando una nuevo elemento en la base de datos,
+    //peero, estoy creando desde order, un nvo. elemento en OrderProduct.
+    //Es por ello que cuando que cree un metodo en Order que se llama "addItemSchema",
+    //donde le requiero al ususario datos como el productId y orderId, ya que no se crea
+    //en esta tabla de Order, sino en OrderProduct
+    const newItem = await models.OrderProduct.create(body)
+    return newItem;
+  }
+
   async find() {
     return [];
   }
@@ -27,7 +37,10 @@ class OrderService {
       include: [{
         association: 'customer',
         include: ['user'],
-      }],
+        },
+        //Incluyo la asociacion de belongsToMany
+        'items',
+      ],
     });
     return order;
   }
