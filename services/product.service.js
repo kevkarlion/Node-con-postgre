@@ -1,10 +1,11 @@
 // const { faker } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
-
+const { Op } = require('sequelize');
 
 // const sequelize = require('./../lib/sequelize');
 
 const { models } = require('./../lib/sequelize');
+const { request } = require('express');
 
 
 
@@ -53,12 +54,44 @@ class ProductsService {
   async find(query) {
     const options = {
       include: ['category'],
+
+      //objeto anidado donde cargo los rangos si es que los hay,
+      //sino por defecto lo cargo vacio.
+      where: {},
     }
+
+    //desestructuracion para paginacion, si es que el cliente los cargo en
+    //en la req de datos query
     const { limit, offset } = query;
     if(limit && offset){
       options.limit = limit;
       options.offset = offset;
     }
+
+    /**
+     * Si la busqueda solo tiene datos query
+     * de un precio puntual, desestructuramos y cargamos
+     * los datos en las optiones
+     */
+    const { price } = query;
+    if( price ) {
+      options.where.price = price;
+    };
+
+    /**
+     * En caso de que tengamos un precio minimo y maximo proporcionado por
+     * el cliente, aplico desestructuracion y cargo en options.where los datos,
+     * usando la libreria de sequelize, puedo cargar estos rangos. Luego le paso los
+     * datos al objeto anidado de where
+     */
+    const { priceMin, priceMax } = query;
+    if( priceMin && priceMax ){
+      options.where.price = {
+        [Op.gte]: priceMin,
+        [Op.lte]: priceMax
+      }
+    }
+
     //En resumen, los parámetros options se utilizan
     //para personalizar y configurar cómo se realiza
     //la consulta a la base de datos utilizando Sequelize,
