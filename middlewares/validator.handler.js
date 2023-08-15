@@ -3,7 +3,9 @@ const boom = require('@hapi/boom');
 function validatorHandler(schema, property) {
   return (req, res, next) => {
     const data = req[property];
-    /**, schema.validate es un método proporcionado por la biblioteca Joi, que es una herramienta muy popular utilizada para validar y estructurar datos en JavaScript.
+
+
+    /** schema.validate es un método proporcionado por la biblioteca Joi, que es una herramienta muy popular utilizada para validar y estructurar datos en JavaScript.
      * Lo que valida es "data" contra el "schema" y si encuentra que no es validado, retorna un { error }
      */
     const { error } = schema.validate(data, { abortEarly: false });
@@ -11,8 +13,8 @@ function validatorHandler(schema, property) {
       next(boom.badRequest(error));
     }
     next();
-  }
-}
+  };
+};
 
 module.exports = validatorHandler;
 

@@ -279,3 +279,29 @@ async findOne(id) {
 
   Tambien calculamos el resultado entre campos. Una suma del precio total de todos los productos de una compra. 
 //--
+
+
+//-- Clase 23 - Offset y limit
+  Claro, te lo explico de manera sencilla:
+
+Imagina que estás en una biblioteca enorme con muchos libros. Quieres leer algunos libros, pero no puedes cargar todos a la vez. Entonces, decides leer solo unos pocos a la vez y luego cambiar.
+
+- **Offset (Desplazamiento)**: El "offset" es como decir cuántos pasos das desde la entrada de la biblioteca antes de comenzar a leer. Por ejemplo, si empiezas en el tercer libro, tu offset es 3. Esto significa que saltas dos libros y empiezas en el tercero.
+
+- **Limit (Límite)**: El "limit" es cuántos libros decides leer a partir del punto donde te encuentras. Si decides leer solo 2 libros, entonces tu límite es 2. Esto te ayuda a no abrumarte con demasiados libros a la vez.
+
+En programación, estas ideas se aplican cuando trabajas con una gran cantidad de datos, como en una base de datos o una lista larga. Utilizas "offset" para decir desde dónde empezar a obtener datos y "limit" para decir cuántos datos obtener a partir de ahí. Así puedes manejar grandes cantidades de información de manera más manejable y eficiente.
+
+
+Offset y limit están soportados de manera nativa en sequelize y en casi cualquier lenguaje que maneje base de datos.
+
+
+
+/division -------------------------------------------------------
+
+Cargamos las options de find en products. Ahí es donde limmit y offset se cargan o no, según el cliente, los datos de preferencia en la paginación.
+Entonces creé un objeto que por defecto, ya viene con el include de las categorias (anidamiento), y carga en este objeto llamado options, los datos de paginación. Aca agrego un código de control condicional (IF). Luego en la busqueda, le envio este option por parametro.
+
+
+
+//--

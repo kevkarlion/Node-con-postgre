@@ -40,7 +40,6 @@ const OrderSchema = {
       return 0;
     }
   },
-
 };
 
 class Order extends Model {

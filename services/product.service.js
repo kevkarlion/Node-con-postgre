@@ -50,10 +50,20 @@ class ProductsService {
 
   }
 
-  async find() {
-    const data = await models.Product.findAll({
+  async find(query) {
+    const options = {
       include: ['category'],
-    });
+    }
+    const { limit, offset } = query;
+    if(limit && offset){
+      options.limit = limit;
+      options.offset = offset;
+    }
+    //En resumen, los parámetros options se utilizan
+    //para personalizar y configurar cómo se realiza
+    //la consulta a la base de datos utilizando Sequelize,
+    //incluyendo cómo se aplican las relaciones y cómo se maneja la paginación.
+    const data = await models.Product.findAll(options);
     return data;
 
     //El uso de sequelize deja inoperable esto, ya que
