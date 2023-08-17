@@ -305,3 +305,59 @@ Entonces creé un objeto que por defecto, ya viene con el include de las categor
 
 
 //--
+
+
+//-- Clase 26
+
+Deploy a Heroku - Este servicio ya no esta disponible, por lo que no pude seguir este deploy. Pero observe igual la clase para ver el proceso que realiza el profesor.
+
+
+Detalles de la clase:
+
+
+En el contexto de la configuración de la biblioteca Sequelize para interactuar con bases de datos, `dialectOptions` se refiere a un conjunto de opciones adicionales específicas del dialecto que se utilizan para personalizar y ajustar la configuración de la conexión a una base de datos particular.
+
+Cada dialecto de base de datos (como MySQL, PostgreSQL, SQLite, etc.) puede tener sus propias opciones específicas que no están cubiertas por las opciones genéricas de la conexión. Estas opciones adicionales se pueden proporcionar a través de la propiedad `dialectOptions` en la configuración de Sequelize para ajustar el comportamiento de la conexión en función de las necesidades particulares del dialecto.
+
+Por ejemplo, en el caso de PostgreSQL, algunas opciones específicas del dialecto que se pueden configurar a través de `dialectOptions` podrían incluir configuraciones avanzadas para la conexión, como la configuración de SSL o la configuración de intervalos de tiempo.
+
+En tu código original, no se proporciona una propiedad `dialectOptions`, pero si necesitas ajustar la configuración para un dialecto específico, podrías hacerlo de esta manera:
+
+```javascript
+const { Client } = require('pg');
+
+async function getConnection() {
+  const client = new Client({
+    host: 'localhost',
+    port: 5432,
+    user: 'kevin',
+    password: 'admin123',
+    database: 'my_store'
+  });
+
+  await client.connect();
+  return client;
+}
+
+const dialectOptions = {
+  // Opciones específicas del dialecto, si es necesario
+};
+
+module.exports = {
+  development: {
+    dialect: 'postgres',
+    dialectOptions: dialectOptions,
+    // ...
+  },
+  production: {
+    dialect: 'postgres',
+    dialectOptions: dialectOptions,
+    // ...
+  }
+};
+```
+
+Recuerda que las opciones específicas del dialecto pueden variar según la base de datos y las características que estés utilizando. Es recomendable consultar la documentación de Sequelize y la documentación del dialecto específico para obtener más detalles sobre las opciones disponibles.
+
+
+//--

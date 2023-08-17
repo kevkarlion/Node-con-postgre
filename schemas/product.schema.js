@@ -8,8 +8,8 @@ const description = Joi.string().min(3).max(25);
 const categoryId = Joi.number().integer();
 const limit = Joi.number().integer();
 const offset = Joi.number().integer();
-const priceMin = Joi.number().integer().min(10);
-const priceMax = Joi.number().integer().min(10);
+const priceMin = Joi.number().integer();
+const priceMax = Joi.number().integer();
 
 
 
