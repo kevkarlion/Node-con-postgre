@@ -361,3 +361,55 @@ Recuerda que las opciones específicas del dialecto pueden variar según la base
 
 
 //--
+
+
+
+//-- Clase de deploy
+Use VERCEL. Como es una pagina que esta mas dedicada a realizar deploys de frontend, hay que realizar ciertos ajustes. 
+Primero, creo una carpeta llamada API y muevo todos mis archivos dentro.
+Luego, cambio las rutas, y debo poner "/api/nueva-ruta", para indicar que mis archivos viven en esa carpeta.
+Otra modificacion que ya habia implementado, es leer la variable del puerto, desde una variable de ambiente.
+Por ultimo, cree un archivo vercel.json donde le doy una configuracion.
+
+
+INFO DE CHATGPT:
+Imagina que estás construyendo un sitio web o una aplicación en Vercel, y tienes una parte de tu proyecto que maneja datos o acciones especiales, como una API para obtener información. Quieres que cuando alguien visite una URL que comienza con "/api/", se dirija automáticamente a la parte de tu proyecto que maneja esa API.
+
+Aquí es donde entra en juego la configuración que has proporcionado:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    }
+  ]
+}
+```
+
+- `"source": "/api/(.*)"`: Esto dice que si alguien visita una URL que comienza con "/api/" seguido de cualquier cosa, como "/api/datos" o "/api/usuarios", esa URL coincidirá con esta regla.
+
+- `"destination": "/api"`: Esto significa que, cuando se cumpla la condición anterior, la solicitud se redirigirá a la parte de tu proyecto que maneja la lógica de la API. En este caso, se redirige a la ruta "/api".
+
+En resumen, esta configuración asegura que cuando alguien visite una URL que comience con "/api/", la solicitud se dirija automáticamente a la parte de tu proyecto que maneja la API, permitiendo que funcione correctamente y maneje las solicitudes de datos o acciones especiales.
+
+Es como si estuvieras diciendo: "Cuando alguien vaya a una URL que parece una solicitud de API, llévalos a la parte de mi código que maneja esa solicitud". Esto asegura que las solicitudes de la API se manejen de manera adecuada y eficiente en tu proyecto en Vercel.
+
+
+Si no haces esta configuración de reescritura en tu proyecto de Vercel, las solicitudes a URLs que comiencen con "/api/" podrían no ser manejadas correctamente por la parte de tu aplicación que se encarga de la lógica de la API. En su lugar, es posible que Vercel intente manejar esas solicitudes como si estuvieran buscando contenido estático en lugar de redirigirlas a la lógica de la API.
+
+La reescritura de URL es importante en este caso porque te permite tener un control específico sobre cómo se enrutan las solicitudes a tu API. Al configurar la reescritura como se describe en el ejemplo, aseguras que todas las solicitudes que comienzan con "/api/" se redirijan a la ruta correcta en tu aplicación que se encarga de manejar las funciones de la API.
+
+En resumen, la configuración de reescritura es crucial para garantizar que las solicitudes a tu API sean manejadas de manera adecuada y que se dirijan a la lógica correspondiente en tu proyecto en Vercel. Si no haces esta configuración, es posible que las solicitudes a tu API no se enrutin correctamente, lo que podría causar errores o comportamientos inesperados en tu aplicación.
+
+
+PREGUNTA A CHATGPT:
+O sea que yo le digo con esta configuracion, que cuando alguien quiera acceder a api/"loquesea", estoy sabiendo que quieren usar mi api, entonces que vayan a "/api" y trate esta URL como una API?
+
+
+Exactamente, has captado la idea correcta. La configuración de reescritura que has proporcionado está diseñada para redirigir todas las solicitudes que comienzan con "/api/" a una ubicación específica en tu aplicación, que generalmente se encarga de manejar la lógica de la API.
+
+Cuando alguien intenta acceder a una URL que comienza con "/api/" (por ejemplo, "/api/datos" o "/api/usuarios"), Vercel tomará esa solicitud y la redirigirá internamente a la ruta "/api" en tu aplicación. Esto te permite saber que el usuario está intentando utilizar la API de tu aplicación, y a partir de ahí, tu código puede manejar la solicitud correctamente para proporcionar los datos o acciones correspondientes.
+
+En resumen, la configuración de reescritura se utiliza para crear una convención en las URLs que indican explícitamente que se trata de solicitudes a la API de tu proyecto. Al redirigirlas a la ruta adecuada en tu aplicación, puedes asegurarte de que la lógica de la API se maneje de manera correcta y eficiente.
